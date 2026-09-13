@@ -13,7 +13,7 @@ class SimpleConvNet:
 
     conv - relu - pool - affine - relu - affine - softmax
     
-    Parameters
+    Parameters参数
     ----------
     input_size : 输入大小（MNIST的情况下为784）
     hidden_size_list : 隐藏层的神经元数量的列表（e.g. [100, 100, 100]）

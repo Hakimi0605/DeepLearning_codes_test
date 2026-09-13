@@ -7,7 +7,7 @@ from dataset.mnist import load_mnist
 from simple_convnet import SimpleConvNet
 from common.trainer import Trainer
 
-# 读入数据
+# 读入数据a
 (x_train, t_train), (x_test, t_test) = load_mnist(flatten=False)
 
 # 处理花费时间较长的情况下减少数据 
