@@ -19,7 +19,7 @@ key_file = {
 }
 
 dataset_dir = os.path.dirname(os.path.abspath(__file__))
-save_file = dataset_dir + "/mnist.pkl"
+save_file = os.path.join(dataset_dir, "mnist.pkl")
 
 train_num = 60000
 test_num = 10000
@@ -102,7 +102,7 @@ def load_mnist(normalize=True, flatten=True, one_hot_label=False):
     -------
     (训练图像, 训练标签), (测试图像, 测试标签)
     """
-    if not os.path.exists(save_file):
+    if not os.path.exists(save_file):#若无则下载mnist数据集
         init_mnist()
         
     with open(save_file, 'rb') as f:
@@ -119,10 +119,10 @@ def load_mnist(normalize=True, flatten=True, one_hot_label=False):
     
     if not flatten:
          for key in ('train_img', 'test_img'):
-            dataset[key] = dataset[key].reshape(-1, 1, 28, 28)
+            dataset[key] = dataset[key].reshape(-1, 1, 28, 28)#-1表示自己计算是多少
 
     return (dataset['train_img'], dataset['train_label']), (dataset['test_img'], dataset['test_label']) 
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':#当执行该文件时才会运行，引用该文件则不会被运行
     init_mnist()

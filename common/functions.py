@@ -1,15 +1,15 @@
 # coding: utf-8
 import numpy as np
 
-
+#恒等函数（回归问题）
 def identity_function(x):
     return x
 
-
+#阶跃函数
 def step_function(x):
-    return np.array(x > 0, dtype=np.int)
+    return np.array(x > 0, dtype=int)
 
-
+#二元分类问题
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))    
 
@@ -27,7 +27,7 @@ def relu_grad(x):
     grad[x>=0] = 1
     return grad
     
-
+#输出可以解释为概率（多元分类）
 def softmax(x):
     if x.ndim == 2:
         x = x.T
@@ -38,11 +38,11 @@ def softmax(x):
     x = x - np.max(x) # 溢出对策
     return np.exp(x) / np.sum(np.exp(x))
 
-
+#均方误差
 def mean_squared_error(y, t):
     return 0.5 * np.sum((y-t)**2)
 
-
+#交叉熵误差
 def cross_entropy_error(y, t):
     if y.ndim == 1:
         t = t.reshape(1, t.size)
